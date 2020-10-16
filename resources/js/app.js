@@ -5,6 +5,7 @@
  */
 import VueRouter from 'vue-router';
 import HeaderComponent from "./components/HeaderComponent";
+import MainComponent from "./components/MainComponent";
 
 require('./bootstrap');
 
@@ -24,9 +25,8 @@ const router = new VueRouter({
     mode: 'history',
     routes: [
         {
-            path: '/tasks',
-            name: 'task.list',
-            component: TaskListComponent
+            path: '/main',
+            component: MainComponent
         },
     ]
 });
@@ -37,6 +37,7 @@ const router = new VueRouter({
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('header-component', HeaderComponent);
+Vue.component('main-component', MainComponent);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
