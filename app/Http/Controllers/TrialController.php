@@ -14,8 +14,15 @@ class TrialController extends Controller
         $trial->name = $faker->name();
         $trial->email = $faker->unique()->safeEmail;
         $trial->save();
-        
+
         return Trial::all();
     }
+
+    public function destroy()
+    {
+        Trial::query()->delete();
+    
+        return Trial::all();
+    }    
 
 }

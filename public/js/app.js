@@ -1999,6 +1999,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2012,6 +2013,13 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.get('/api/trial').then(function (res) {
         _this.fakerdatas = res.data;
+      });
+    },
+    deleteFakerdatas: function deleteFakerdatas() {
+      var _this2 = this;
+
+      axios.get('/api/trial/destroy').then(function (res) {
+        _this2.fakerdatas = res.data;
       });
     }
   },
@@ -37727,7 +37735,11 @@ var render = function() {
         _c("div", { staticClass: "col", attrs: { id: "select" } }, [
           _c("p", [_vm._v("名前とemail")]),
           _vm._v(" "),
-          _c("button", { on: { click: _vm.getFakerdatas } }, [_vm._v("作成")])
+          _c("button", { on: { click: _vm.getFakerdatas } }, [_vm._v("作成")]),
+          _vm._v(" "),
+          _c("button", { on: { click: _vm.deleteFakerdatas } }, [
+            _vm._v("全データ削除")
+          ])
         ]),
         _vm._v(" "),
         _c(
