@@ -19,4 +19,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('/trial', 'TrialController@index');
+Route::get('/trial/create', 'TrialController@create');
 Route::get('/trial/destroy', 'TrialController@destroy');

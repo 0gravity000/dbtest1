@@ -2000,6 +2000,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2015,11 +2026,18 @@ __webpack_require__.r(__webpack_exports__);
         _this.fakerdatas = res.data;
       });
     },
-    deleteFakerdatas: function deleteFakerdatas() {
+    createFakerdatas: function createFakerdatas() {
       var _this2 = this;
 
-      axios.get('/api/trial/destroy').then(function (res) {
+      axios.get('/api/trial/create').then(function (res) {
         _this2.fakerdatas = res.data;
+      });
+    },
+    deleteFakerdatas: function deleteFakerdatas() {
+      var _this3 = this;
+
+      axios.get('/api/trial/destroy').then(function (res) {
+        _this3.fakerdatas = res.data;
       });
     }
   },
@@ -37732,10 +37750,12 @@ var render = function() {
     _vm._v(" "),
     _c("div", { staticClass: "container" }, [
       _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col", attrs: { id: "select" } }, [
-          _c("p", [_vm._v("名前とemail")]),
+        _c("div", { staticClass: "col-2", attrs: { id: "select" } }, [
+          _c("p", [_vm._v("データ項目")]),
           _vm._v(" "),
-          _c("button", { on: { click: _vm.getFakerdatas } }, [_vm._v("作成")]),
+          _c("button", { on: { click: _vm.createFakerdatas } }, [
+            _vm._v("作成")
+          ]),
           _vm._v(" "),
           _c("button", { on: { click: _vm.deleteFakerdatas } }, [
             _vm._v("全データ削除")
@@ -37744,19 +37764,42 @@ var render = function() {
         _vm._v(" "),
         _c(
           "div",
-          { staticClass: "col-8", attrs: { id: "result" } },
+          { staticClass: "col", attrs: { id: "result" } },
           [
             _c("p", [_vm._v("結果")]),
             _vm._v(" "),
             _vm._l(_vm.fakerdatas, function(fakerdata) {
-              return _c("tr", [
+              return _c("tr", { key: fakerdata.id }, [
                 _c("th", { attrs: { scope: "row" } }, [
                   _vm._v(_vm._s(fakerdata.id))
                 ]),
                 _vm._v(" "),
                 _c("td", [_vm._v(_vm._s(fakerdata.name))]),
                 _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(fakerdata.email))])
+                _c("td", [_vm._v(_vm._s(fakerdata.email))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(fakerdata.country))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(fakerdata.postcode))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(fakerdata.address))]),
+                _c("br"),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(fakerdata.company))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(fakerdata.jobTitle))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(fakerdata.phoneNumber))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(fakerdata.URL))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(fakerdata.ipv4))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(fakerdata.sentence))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(fakerdata.text))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(fakerdata.colorName))])
               ])
             })
           ],
