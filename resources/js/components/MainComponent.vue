@@ -4,10 +4,17 @@
         <div class="container">
         <div class="row">
             <div id="select" class="col">
-                <p>名前</p>
+                <p>名前とemail</p>
+                <button v-on:click="getFakerdatas">作成</button>
             </div>
             <div id="result" class="col-8">
-                <p>ここに結果</p>
+                <p>結果</p>
+                <tr v-for="fakerdata in fakerdatas">
+                    <th scope="row">{{ fakerdata.id }}</th>
+                    <td>{{ fakerdata.name }}</td>
+                    <td>{{ fakerdata.email }}</td>
+                </tr>
+
             </div>
         </div>
         </div>
@@ -18,9 +25,21 @@
     export default {
         data: function () {
             return {
-                msg: 'Hello World!'
+                msg: 'ランダムなデータを作成',
+                fakerdatas: []
             }
         },
+        methods: {
+            getFakerdatas() {
+                axios.get('/api/trial')
+                    .then((res) => {
+                        this.fakerdatas = res.data;
+                    });
+            },
+        },
+        mounted() {
+            this.getFakerdatas();
+        }
     }
 </script>
 

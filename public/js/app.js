@@ -1992,11 +1992,31 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      msg: 'Hello World!'
+      msg: 'ランダムなデータを作成',
+      fakerdatas: []
     };
+  },
+  methods: {
+    getFakerdatas: function getFakerdatas() {
+      var _this = this;
+
+      axios.get('/api/trial').then(function (res) {
+        _this.fakerdatas = res.data;
+      });
+    }
+  },
+  mounted: function mounted() {
+    this.getFakerdatas();
   }
 });
 
@@ -37702,27 +37722,39 @@ var render = function() {
   return _c("div", { staticClass: "root" }, [
     _c("h1", [_vm._v(_vm._s(_vm.msg))]),
     _vm._v(" "),
-    _vm._m(0)
-  ])
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container" }, [
+    _c("div", { staticClass: "container" }, [
       _c("div", { staticClass: "row" }, [
         _c("div", { staticClass: "col", attrs: { id: "select" } }, [
-          _c("p", [_vm._v("名前")])
+          _c("p", [_vm._v("名前とemail")]),
+          _vm._v(" "),
+          _c("button", { on: { click: _vm.getFakerdatas } }, [_vm._v("作成")])
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "col-8", attrs: { id: "result" } }, [
-          _c("p", [_vm._v("ここに結果")])
-        ])
+        _c(
+          "div",
+          { staticClass: "col-8", attrs: { id: "result" } },
+          [
+            _c("p", [_vm._v("結果")]),
+            _vm._v(" "),
+            _vm._l(_vm.fakerdatas, function(fakerdata) {
+              return _c("tr", [
+                _c("th", { attrs: { scope: "row" } }, [
+                  _vm._v(_vm._s(fakerdata.id))
+                ]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(fakerdata.name))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(fakerdata.email))])
+              ])
+            })
+          ],
+          2
+        )
       ])
     ])
-  }
-]
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 
 
